@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products Page</title>
+    <style>
+        .product{
+            display: grid;
+            grid-template-columns: repeat(3,180px);
+            grid-template-rows: repeat(auto);
+            gap: 20px;
+        }
+        .product>div{
+            border: 1px solid red;
+            text-align: center;
+        }
+        .f{
+            display: flex;
+        }
+        img{
+            width: 100%;
+        }
+        button{
+            margin: 0 5px 0 5px;
+        }
+
+    </style>
+</head>
+<body>
+    
+
+    <a href="index.html">
+        <button>Home Page</button>
+    </a>
+
+    <br>
+    <br>
+
+    <div class="f">
+        <h3>Total :</h3> <h3 id="counter">0</h3>
+    </div>
+
+    <div class="product">
+
+
+    </div>
+
+
+</body>
+</html>
+
+<script>
+
+    let product = document.querySelector(".product");
+
+    let localData = JSON.parse(localStorage.getItem("Products")) || [];
+
+    let counter = document.getElementById("counter");
+    counter.innerText = localData.length;
+
+    function displayProducts(localData){
+        // console.log(data)
+
+        product.innerHTML = null;
+
+        localData.forEach(function(element){
+            let div = document.createElement("div");
+            
+            let image = document.createElement("img");
+            image.src = element.image;
+
+            let name = document.createElement("p");
+            name.innerText = element.name;
+
+            let cat = document.createElement("p");
+            cat.innerText = element.category ;
+
+            let gen = document.createElement("p");
+            gen.innerText = element.gender;
+
+            let price= document.createElement("p");
+            price.innerText = element.price;
+
+            let remove = document.createElement("button");
+            remove.innerText = "Remove";
+
+            remove.addEventListener("click",function(){
+            removeFunc(element)
+            
+            })
+
+            let sold = document.createElement("button");
+            sold.innerText = "Sold";
+            
+
+            div.append(image,name,cat,gen,price,remove,sold);
+
+            product.append(div);
+        })
+
+    }
+
+    displayProducts(localData);
+
+
+    function removeFunc(element){
+    
+        let deleted = localData.filter(function(el){
+           return el != element;
+        });
+
+        localData = deleted;
+        localStorage.setItem("Products",JSON.stringify(localData));
+        displayProducts(localData);
+        counter.innerText = localData.length;
+    }
+
+</script>

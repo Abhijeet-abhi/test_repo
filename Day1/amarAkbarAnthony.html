@@ -1,0 +1,47 @@
+/*
+Amar is a singer, lives in Goa.
+
+Akbar is a chef, lives in Mumbai.
+
+Anthony is a Magician, lives in Kashmir.
+
+All three of them are best friends but because of work cannot meet. All of them wants to borrow each other's skills for a while so that they can impress people.
+
+We want to make sure they can borrow each other's skill.
+
+Create an object for each one of them with relevant methods and properties and see if you could let them borrow using .Call method.
+*/
+
+let amarDetails = {
+    name : "Amar",
+    place : "Goa",
+    skill : "singer",
+    borrow : function(){
+        console.log(`${this.name} has borrowed ${amarDetails.skill} skill from ${amarDetails.name}`)
+    }
+}
+
+let akbarDetails ={
+    name : "Akbar",
+    place : "Mumbai",
+    skill : "Chef",
+    borrow : function(){
+        console.log(`${this.name} has borrowed ${akbarDetails.skill} skill from ${akbarDetails.name}`)
+    }
+   
+}
+
+let anthonyDetails ={
+    name : "Anthony",
+    place : "Kasmir",
+    skill : "Magician",
+    borrow : function(){
+        console.log(`${this.name} has borrowed ${anthonyDetails.skill} skill from ${anthonyDetails.name}`)
+    }
+   
+  
+}
+
+amarDetails.borrow.call(akbarDetails);
+akbarDetails.borrow.call(anthonyDetails);
+anthonyDetails.borrow.call(amarDetails);

@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constructors</title>
+</head>
+
+<body>
+
+</body>
+
+</html>
+
+<script>
+
+    /* Without this and new keyword (Using normal function)
+
+    function nikeProduct(n,p,t){
+        let Product = {};
+        Product.name = n;
+        Product.price = p;
+        Product.type = t;
+
+        return Product;
+    }
+
+    let prod1 = nikeProduct("Shoes",2999,"Foot Wear");
+    console.log(prod1)
+
+    */
+
+    // Using Constructor function
+    /*
+
+    function nikeProductCF(n,p,t){
+        this.name = n;
+        this.price = p;
+        this.type = t;
+    }
+
+    var prod1 = new nikeProductCF("Shoes",2999,"Foot Wear");
+    console.log(prod1)
+    */
+
+    /* eg1
+    var person = {
+    name : "John",
+    myName : function(){
+        console.log(person.name)
+    }
+};
+
+person.myName();
+*/
+
+// this keyword
+
+    /*
+    
+    var person = {
+        name : "John",
+    
+        myName : function(){
+            console.log(this.name)
+        }
+    };
+    
+    person.myName();
+    */
+
+
+//Using this and new keyword to create and return an object
+
+    /*
+    
+    function Player(n,c){
+        this.name = n;
+        this.city =c;
+    }
+    
+    var myPlayer = new Player("Christiano Ronaldo","Barcelona");
+    
+    console.log(myPlayer)
+    
+    */
+
+    /* eg2
+    
+    function Employee(p,s){
+        this.profession =p;
+        this.salary = s;
+    }
+    
+    var myEmployee1 = new Employee("Software Engineer", "14LPA");
+    var myEmployee2 = new Employee("Mechanical Enginer", "12LPA");
+    
+    
+    
+    
+    console.log(myEmployee1,myEmployee2);
+    */
+
+//Call,Apply,Bind
+
+//1.Call
+
+    /*
+    
+    Def: It can be used to invoke(call) a method with an owner object as an argument.
+    
+    */
+
+// eg
+    /*
+    var person1 = {
+        name : "John"
+    }
+    
+    var person2 = {
+        name : "Rahul"
+    }
+    
+    function myName(){
+        console.log(this.name)
+    }
+    
+    myName.call(person1) //John
+    myName.call(person2) //Rahul
+    */
+
+    /*
+    
+    var person = {
+        fullName : function (){
+            return this.firstName + " " + this.lastName;
+        }
+    }
+    
+    var person1 = {
+        firstName : "John",
+        lastName : "Doe"
+    }
+    var person2 = {
+        firstName : "Mary",
+        lastName : "Doe"
+    }
+    
+    console.log(person.fullName.call(person1))
+    console.log(person.fullName.call(person2))
+    */
+
+
+    const kitchen = {
+        name : "kitchen",
+        purpose : "cooking",
+        cookFood(order){
+            console.log(`Serving ${order} in ${this.name}`)
+        }
+    };
+
+    const bedroom = {
+        name : "bedroom",
+        purpose : "rest"
+    }
+
+    kitchen.cookFood.call(bedroom,"maggie");
+
+
+
+
+
+
+
+
+
+</script>

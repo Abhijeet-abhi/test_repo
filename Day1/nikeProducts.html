@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Receive information from form and show it</h3>
+
+    <form action="" onsubmit="nikeProduct(event)" id="product_form">
+        <input type="text" placeholder="Name" id="name">
+        <input type="number" placeholder="Price" id="price">
+
+        <input type="submit">
+
+    </form>
+</body>
+
+</html>
+
+<script>
+
+    function nikeProductCF(n, p) {
+        this.name = n;
+        this.price = p;
+    }
+
+    var arr =[];
+
+    function nikeProduct(event) {
+        event.preventDefault();
+
+        let form = document.getElementById("product_form");
+
+        let name = form.name.value;
+        let price = form.price.value;
+
+        let product = new nikeProductCF(name, price);
+
+        arr.push(product);
+
+        console.log(arr);
+
+    }
+
+</script>
